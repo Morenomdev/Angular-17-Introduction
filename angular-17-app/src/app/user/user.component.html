@@ -1,5 +1,23 @@
-@if (isLoggedIn) {
-  <p>Bienvenido ,{{ username }}</p>
-} @else {
-  <p>Inicia sesion</p>
-}
+<section>
+  @if (isLoggedIn) {
+    <p>Bienvenido, {{ username }}</p>
+    <img
+    (click)="greet()" 
+    src="https://github.com/morenomdev.png" 
+    alt="photo" />
+  } @else {
+    <p>Inicia sesion</p>
+    <button (click)="isLoggedIn = true">
+        Log In
+    </button>
+  }
+
+  <app-games 
+  (addFavoriteEvent)="getFavorite($event)"
+  username = " {{ username }} "></app-games>
+
+  @if (favGame !== '')  {
+    <p>Your favorite game is {{ favGame }} </p>
+  }
+
+</section>
